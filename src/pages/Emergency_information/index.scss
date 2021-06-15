@@ -1,0 +1,113 @@
+@import "../../styles/base.scss";
+.taro_router {background:$backGround_blackF1;}
+.EmergencyInfo-page{
+   
+    &-content{
+        padding: 32px;
+        &-tittle{
+            @include fc(36px,#fff);
+            font-weight: 600;
+        }
+
+        &-instru{
+            @include fc(32px,#fff);
+            line-height: 44px;
+            margin-top: 24px;
+        }
+        .goUrlButton{
+            border-radius: 16px;
+            margin-top: 32px;
+           color:#FF0000;
+           font-weight: 600;
+        }
+
+        
+        .at-list__item-extra{
+            max-width: 100%;
+        }
+        &-teamTitle,&-teamNumber{
+            padding: 0 32px;
+            @include fc(32px,#262626);
+            line-height: 44px;
+        }
+        &-teamTitle{
+            margin-top: 24px;
+        }
+        &-teamNumber{
+            margin-top: 16px;
+            padding-bottom: 24px;
+        }
+    }
+    
+}
+
+
+.listItem{
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 32px;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
+
+    &-center{
+        max-width: 420px;
+        color: #787878;
+        @include ep;
+    }
+    &-right{
+        @include fc(28px,#3296FA);
+        padding-right:25px;
+        display: flex;
+        align-items: center;
+        taro-image-core{
+            @include wh(28px,40px);
+            margin-right: 10px;
+        }
+    }
+}
+.listItem::after{
+    content: "";
+    position: absolute;
+    -webkit-transform-origin: center;
+    -ms-transform-origin: center;
+    transform-origin: center;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    pointer-events: none;
+    top: auto;
+    left: 0.512rem;
+    right: 0;
+    bottom: 0;
+    -webkit-transform: scaleY(0.5);
+    -ms-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    border-bottom: 1PX solid #d6e4ef;
+}
+
+
+
+.accordionBox{
+    margin-top: 32px;
+    overflow: hidden;
+    position: relative;
+    &-address{
+        padding: 24px 24px 12px 24px;
+        @include fc(32px,#262626);
+        line-height: 44px;
+    }
+
+    &-icon{
+        @include wh(8px,32px);
+        position: absolute;
+        background: #3296fa;
+        top: 37px;
+        left:28px;
+        }
+        .at-accordion__info{
+            padding-left: 35px;
+            font-weight: 600;
+        }
+    
+}

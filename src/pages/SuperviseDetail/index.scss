@@ -1,0 +1,55 @@
+@import "../../styles/base.scss";
+.taro_router {background:$backGround_blackF1;}
+.SuperviseDetail-page{
+   padding: 24px;
+   &-box{
+      box-sizing: border-box;
+      padding: 24px;
+      &-title{
+         @include fc(32px,#191F25);
+         font-weight: 600;
+         margin-bottom: 50px;
+      }
+      
+   }
+
+   &-box1{
+      box-sizing: border-box;
+      margin-top: 32px;
+      &-content{
+         padding: 24px
+      }
+      &-title{
+         @include fc(32px,#191F25);
+         line-height:44px;
+      }
+      &-content{
+         @include fc(32px,#464646);
+         line-height:44px;
+         margin-top: 8px;
+      }
+      &-imgContent{
+         display: flex;
+         flex-wrap: wrap;
+         margin-top: 9px;
+         taro-image-core{
+            @include wh (150px, 150px);
+            margin-right:12px;
+         }
+         taro-image-core:nth-child(n+5){
+            margin-top: 12px;
+         }
+      }
+   }
+
+   .at-list__item-extra{
+      max-width: 400px;
+   }
+  
+}
+
+.marginTop{
+   margin-top:24px;
+}
+
+

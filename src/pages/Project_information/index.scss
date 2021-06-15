@@ -1,0 +1,72 @@
+
+@import "../../styles/base.scss";
+// .taro_page {background:$backGround_blackF1;}
+
+.Infomation-Page{
+    
+    &-bac{
+        background-image: url('../../static/images/bg-zhengfu1@2X.png');
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        background-color: $backGround_blackF1;
+        padding-bottom: 64px;
+        &-padding{
+            padding:32px 24px;
+        }
+        &-tittle{
+            @include fc(36px,#fff);
+        }
+        &-intru{
+            @include fc(28px,#fff);
+            margin-top: 24px;
+        }
+    }
+    
+    &-block{
+        margin-top: 32px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        &-item{
+            @include wh(340px,152px);
+            background: #ffffff;
+            border-radius: 12px;
+            padding:18px 26px;
+            box-sizing: border-box;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-between;
+            &-tittle{
+                @include fc(32px,#262626);
+            }
+            &-intru{
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                align-items: center;
+                @include fc(48px,#3296fa);
+                font-weight: 500;
+                &-img{
+                    @include wh(48px,48px);
+                }
+            }
+        }
+        &-item:nth-child(n+3){
+            margin-top: 24px;
+        }
+    }
+    &-bottom{
+        margin-top: 32px;
+        overflow: hidden;
+        // .item-content__info-title{
+        //     font-weight: 600;
+        // }
+        .at-list__item::after{
+            border-bottom: 2px solid rgba(25,31,37,0.03);
+        }
+        .at-list__item-extra{
+            max-width: 460px;
+        }
+    }
+}
+

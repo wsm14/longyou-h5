@@ -1,0 +1,26 @@
+
+@import "../../styles/base.scss";
+.taro_router {background: #f1f1f1;}
+.RegulationMore-Page{
+    width:712px;
+    margin: 0 auto;
+    padding-top: 12px;
+    padding-bottom: 24px;
+    &-list{
+        border-radius: 16px;
+        overflow: hidden;
+        margin-top: 32px;
+        .at-list__item::after{
+            border-bottom: 2px solid rgba(25,31,37,0.03);
+        }
+        &-first{
+            .item-content__info-title{
+                font-weight: 600;
+            } 
+        }
+    }
+}
+.at-list__item .item-content__info-note{
+    max-width: 600px;
+    @include ep;
+}

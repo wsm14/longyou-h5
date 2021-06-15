@@ -1,0 +1,123 @@
+
+@import "../../styles/base.scss";
+.taro_router {background: #f1f1f1;}
+.SafeAssessment-Page{
+    &-bac{
+        background-image: url('../../static/images/bg-zhengfu1@2X.png');
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        background-color: $backGround_blackF1;
+        padding: 32px;
+    }
+    &-top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        taro-view-core:nth-child(1){
+            @include fc(36px,#fff)
+        }
+        taro-view-core:nth-child(2){
+            display: flex;
+            align-items: center;
+            @include fc(28px,#fff);
+            
+        }
+        taro-image-core{
+            @include wh(24px,32px);
+            margin-left: 16px;
+        }
+    }
+    &-topTittle{
+        @include fc(28px,#fff);
+        line-height: 32px;
+        margin-top: 24px;
+    }
+    &-list{
+        border-radius: 16px;
+        overflow: hidden;
+        margin-top: 32px;
+        .at-list__item::after{
+            border-bottom: 2px solid rgba(25,31,37,0.03);
+        }
+        .at-accordion__header::after{
+            border-bottom: 2px solid rgba(25,31,37,0.03);
+        }
+        .at-accordion__content::after{
+            border:none
+        }
+        
+        
+    }
+    
+    &-edit{
+        @include wh(100%,152px);
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        margin-top: 32px;
+        @include fc(32px,#7878);
+        taro-image-core{
+            @include wh(64px,64px);
+            margin-right: 16px;
+        }
+    }
+    &-imgList{
+        box-sizing: border-box;
+        margin-top: 32px;
+        padding: 24px;
+        &-tittle{
+            @include fc(32px,#242424);
+            margin-bottom: 10px;
+        }
+        .at-image-picker__flex-box{
+                margin-left:-15px
+            }
+    }
+}
+.listItem{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+    position: relative;
+    box-sizing: border-box;
+    &-left{
+        @include fc(32px,#787878);
+        line-height: 48px;
+        width:60%;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+    }
+    &-right{
+        display: flex;
+        font-size: 32px;
+        color:$font_blue;
+        &-involve{
+            margin-right: 10px;
+        }
+    } 
+}
+
+
+
+
+.listItem::after{
+    content: "";
+    position: absolute;
+    -webkit-transform-origin: center;
+    -ms-transform-origin: center;
+    transform-origin: center;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    pointer-events: none;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    border-bottom: 2px solid rgba(25,31,37,0.03);
+    -webkit-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    transform: scale(0.5);
+    border-top-width: 1PX;
+}

@@ -1,0 +1,190 @@
+@import './mixin';
+
+$font_red: #FF6754;
+$font_black: #242424;
+$font_black66: #666666;
+$font_black99: #999999;
+$font_blackD1: #D1D1D1;
+$font_origin: #FE9E01;
+$font_blue: #3296fa;
+
+$backGround_red: #FF6754;
+$backGround_origin: #FE9E01;
+$backGround_black: rgba(3, 3, 3, 0.35);
+$backGround_blackF1: #F1F1F1;
+$backGround_blackF5: #F5F5F5; //默认背景色
+$backGround_blackE1: #E1E1E1;
+$backGround_blackD1: #D1D1D1;
+
+$backGround_logo: rgba(255, 103, 84, 0.15);
+
+$baseSidesPading: 12px;
+$baseBorderRadiusMin: 16px;
+$baseBorderRadius: 12px;
+
+//默认动画时间
+$transitionTime: 0.5s;
+
+//默认宽度
+$defaultWidth: 351px;
+//默认两遍间隙
+$defaultMargin: 16px;
+
+page,
+body {
+  box-sizing: border-box;
+}
+
+View {
+  box-sizing: border-box;
+}
+
+.base-page {
+  min-height: 100vh;
+  width: 100vw;
+  background-color: $backGround_blackF5;
+}
+
+//定位上下左右局中
+.positionMiddle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+//小号按钮
+.button_small {
+  height: 34px;
+  min-width: 88px;
+  background: $backGround_red;
+  border-radius: 18px;
+  @include fs(14px);
+  text-align: center;
+  padding: 10px 14px;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button_small_none {
+  border: 1px solid $backGround_red;
+  height: 34px;
+  min-width: 88px;
+  background: white;
+  border-radius: 18px;
+  @include fs(14px);
+  text-align: center;
+  padding: 10px 14px;
+  color: $font_red;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button_small_none_gray {
+  border: 1px solid $backGround_blackD1;
+  height: 34px;
+  min-width: 88px;
+  background: white;
+  border-radius: 18px;
+  @include fs(14px);
+  text-align: center;
+  padding: 10px 14px;
+  color: $font_black66;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+//中号按钮
+.button_middle {
+  height: 36px;
+  background: $backGround_red;
+  border-radius: 18px;
+  @include fs(16px);
+  text-align: center;
+  padding: 10px;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+//大号按钮
+.button_big {
+  height: 44px;
+  min-width: 110px;
+  background: $backGround_red;
+  border-radius: 22px;
+  @include fs(16px);
+  text-align: center;
+  padding: 14px;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button_big_none {
+  border: 1px solid $backGround_red;
+  height: 44px;
+  min-width: 112px;
+  background: white;
+  border-radius: 22px;
+  @include fs(16px);
+  text-align: center;
+  padding: 14px;
+  color: $font_red;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.botton_disabled {
+  background-color: rgba(255, 103, 84, 0.5);
+}
+
+//去除按钮默认样式
+.noStyleButton {
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  border: none;
+  border-radius: 0;
+  width: auto;
+}
+
+.noStyleButton::after {
+  display: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pageStyle{
+  min-height:528px;
+  background-image: url('../static/images/index.png');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+
+.baseBox {
+  width: 100%;
+  border-radius: $baseBorderRadiusMin;
+  background-color: white;
+}
+
+.submitButton{
+  @include wh(576px,80px);
+  background: linear-gradient(0deg,#465efb, #4db7fe);
+  line-height: 80px;
+  margin: 70px auto;
+  border-radius: 6px;
+}

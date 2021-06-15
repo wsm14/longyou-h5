@@ -1,0 +1,59 @@
+@import "./fontFamily";
+
+/* methods
+-------------------------- */
+// 背景图片地址和大小
+@mixin bg($url) { 
+  background: url($url) no-repeat;
+  background-size: cover;
+}
+
+// 背景图片地址和大小
+@mixin bgNoUrl() {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+// 宽高
+@mixin wh($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+
+//什么颜色和字体大小
+@mixin fc($size, $color) {
+  //font-family: PingFangSC-Regular;
+  font-size: $size;
+  letter-spacing: 0;
+  line-height: $size;
+  color: $color;
+}
+
+//设置字体大小
+@mixin fs($size) {
+  //font-family: PingFangSC-Regular;
+  font-size: $size;
+  letter-spacing: 0;
+  line-height: $size;
+
+  //color: $font_black;
+
+}
+
+//设置数字的字体
+@mixin num{
+  font-family: DIN;
+}
+
+
+
+//超过一行省略号
+@mixin ep{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+

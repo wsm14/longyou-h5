@@ -1,0 +1,39 @@
+
+@import "../../styles/base.scss";
+.taro_router {background: #f1f1f1;}
+.ScoreDetail-Page{
+    padding:24px 24px 50px 24px;
+
+
+    &-box{
+        overflow: hidden;
+        box-sizing: border-box;
+        padding: 0 32px 32px 32px;
+        &:nth-child(n+2){
+            margin-top: 20px;
+        }
+    }
+    &-list{
+        &-item{
+            display: flex;
+            align-items: center;
+            @include fc(32px,#191f25);
+            line-height: 48px;
+            padding: 24px 0;
+            justify-content: space-between;
+        }
+        &-otherItem{
+            margin-top:26px;
+            &-remark{
+                 @include fc(32px,#191f25);
+             }
+             .at-image-picker__flex-box{
+                margin-left:-15px
+            }
+         }
+         &-AtTextarea{
+             margin-top: 16px;  
+         }
+    }
+    
+}

@@ -1,0 +1,41 @@
+@import "../../styles/base.scss";
+.taro_router {background:$backGround_blackF1;}
+.InquiryService-page{
+   
+    &-content{
+        padding: 32px;
+
+
+        &-tittle{
+            @include fc(36px,#fff);
+            font-weight: 600;
+        }
+
+        &-box{
+            margin-top: 32px;
+            overflow: hidden;  
+            padding-bottom: 24px;
+            &-bottom1{
+                @include fc(32px,#262626);
+                line-height: 44px;
+                padding: 24px 32px 8px 32px;
+            }
+
+            &-bottom2{
+                @include fc(32px,#3296fa);
+                line-height: 44px;
+                padding: 0 32px;
+            }
+        }
+
+
+        .submitButton{
+            margin-top: 96px;
+        }
+    }
+    
+}
+
+.at-list__item-extra{
+    max-width: 400px;
+}

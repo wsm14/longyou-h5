@@ -1,0 +1,75 @@
+
+@import "../../styles/base.scss";
+.taro_router {background: #f1f1f1;}
+.Regulation-Page{
+    
+    &-content{
+        padding: 32px 24px;
+        &-signOut{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            &-name{
+                @include fc(32px,#fff);
+                font-weight: 600;
+            }
+            &-out{
+               display: flex;
+               @include fc(28px,#fff);
+            }
+            taro-image-core{
+                width: 32px;
+                height: 32px;
+                margin-left: 16px;
+            }
+        }
+        
+        
+    }
+
+    &-topImg{
+        @include wh(100%,336px);
+        border-radius: 16px;
+        margin-top: 30px;
+    }
+
+    &-middle{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 32px;
+        &-button{
+            @include wh(340px,112px);
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0px 6px 24px 0px rgba(0,0,0,0.03); 
+            @include fc(32px,#191f25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            taro-image-core{
+                @include wh(64px,64px);
+                margin-right: 24px;
+            }
+        }
+    }
+
+    &-list{
+        border-radius: 16px;
+        overflow: hidden;
+        margin-top: 32px;
+        .at-list__item::after{
+            border-bottom: 2px solid rgba(25,31,37,0.03);
+        }
+        &-first{
+            .item-content__info-title{
+                font-weight: 600;
+            } 
+        }
+    }
+}
+
+.at-list__item .item-content__info-note{
+    max-width: 600px;
+    @include ep;
+}

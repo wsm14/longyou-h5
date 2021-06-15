@@ -1,0 +1,21 @@
+@import "../../styles/base.scss";
+
+
+.titleBar{
+    padding: 24px 24px 0 24px;
+    &-title{
+        @include fc(32px,#191F25);
+        line-height: 44px;
+        &-sign{
+            color: #FF421D;
+            margin-right: 8px;
+        }
+    }
+    &-textarea{
+        margin-top: 8px;
+    }
+    .at-textarea{
+        margin-top: 8px;
+        @include fc(32px,#333) 
+    }
+}

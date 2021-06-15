@@ -1,0 +1,154 @@
+
+@import "../../styles/base.scss";
+.taro_router {background: #f1f1f1;}
+.index-pageBox{
+  width: 100%;
+  // height: 100%;
+  background-color: #F2F2F3;
+  margin: 0 auto;
+  overflow: hidden;
+  background-image: url('../../static/images/bg-zhengfu1@2X.png');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  .paddingBox{
+    padding: 20PX 12PX;
+    .logo{
+      .tipTitle{
+        display: block;
+        font-size: 18PX;
+        font-weight: 600;
+        color: #ffffff;
+      }
+      .timeText{
+        @include fc(28px,#FFF);
+        margin-top:24px;
+      }
+      // position: relative;
+      .codeBigBox{
+        // width: 96%;
+        height: 112PX;
+        background-color: #FFFFFF;
+        border-radius: 10PX;
+        padding-left: 15PX;
+        margin-top: 32px;
+        .codeLeftBox{
+          overflow: hidden;
+          width: 18%;
+          height: 96PX;
+          border-bottom-left-radius: 10PX;
+          border-bottom-right-radius: 10PX;
+          color: #2A3851;
+          font-size: 10PX;
+          text-align: center;
+          float: left;
+          .QRcode{
+            @include wh(96px,96px);
+          }
+          .codeBlueBox{
+            width: 48PX;
+            height: 48PX;
+            background-image: url('../../static/images/icon-erweima-jiaohao@2x.png');
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            margin: 16PX auto 8PX auto;
+          }
+          .codeGreenBox{
+            width: 48PX;
+            height: 48PX;
+            background-image: url('../../static/images/icon-erweima-henhao@2x.png');
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            margin: 16PX auto 8PX auto;
+          }
+          .codeGrayBox{
+            width: 48PX;
+            height: 48PX;
+            background-image: url('../../static/images/QRcode_0.png');
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            margin: 16PX auto 8PX auto;
+          }
+          .codeYellowBox{
+            width: 48PX;
+            height: 48PX;
+            background-image: url('../../static/images/icon-erweima-zhongdeng@2x.png');
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            margin: 16PX auto 8PX auto;
+          }
+          .codeOrangeBox{
+            width: 48PX;
+            height: 48PX;
+            background-image: url('../../static/images/icon-erweima-jiaocha@2x.png');
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            margin: 16PX auto 8PX auto;
+          }
+          .codeRedBox{
+            width: 48PX;
+            height: 48PX;
+            background-image: url('../../static/images/icon-erweima-hencha@2x.png');
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            margin: 16PX auto 8PX auto;
+          }
+        }
+        .codeRightBox{
+          float: left;
+          margin-left: 12PX;
+          padding-top: 14PX;
+          width: 74%;
+          .projectLevelText{
+            font-size: 16PX;
+            color: #2A3851;
+            font-weight: bold;
+            margin-bottom: 12PX;
+          }
+          .projectName{
+            width: 99%;
+            font-size: 14PX;
+            color: rgba(42, 56, 81, 0.81);
+            // overflow:hidden;
+            // text-overflow:ellipsis;
+            // display:-webkit-box;
+            // -webkit-line-clamp:2;
+            // -webkit-box-orient: vertical;
+            text-overflow: -o-ellipsis-lastline;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+          }
+        }
+      }
+    }
+    .conBox{
+      padding: 60px 44px;
+      margin:40px auto;
+      background-color: #FFFFFF;
+      border-radius: 10PX;
+      font-size: 24px;
+      .at-grid__flex .content-inner__img{
+        @include wh(104px,104px)
+      }
+    }
+    .footer{
+      width: 100%;
+      text-align: center;
+      margin: 54PX auto;
+      font-size:14PX;
+      color:rgba(25,31,37,1);
+      opacity:0.4;
+    }
+  }
+  
+}
+
+
+taro-button-core+taro-button-core{
+  margin: 0 !important;
+}
+
+/*  #endif  */

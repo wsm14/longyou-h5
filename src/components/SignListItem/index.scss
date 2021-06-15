@@ -1,0 +1,15 @@
+@import "../../styles/base.scss";
+
+.SignListItem-page{
+    position: relative;
+
+    &-sign{
+        position: absolute;
+        top: 30px;
+        left: 23px;
+        @include fc(32px,#FF421D);
+    }
+    .at-list__item-content{
+        padding-left:20px;
+    }
+}

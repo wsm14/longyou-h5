@@ -1,0 +1,23 @@
+@import "../../styles/base.scss";
+
+
+.FloatLayout-button{
+    display: flex;
+    align-items: center;
+    padding: 10px 24px 24px 24px;
+    taro-view-core{
+        flex:1
+    }
+    taro-view-core:nth-child(1),taro-view-core:nth-child(3){
+        @include fc(28px,#787878);
+
+    }
+    taro-view-core:nth-child(2){
+        @include fc(36px,#191F25);
+        text-align: center;
+        font-weight: 500;
+    }
+    taro-view-core:nth-child(3){
+        text-align: right;
+    }
+}

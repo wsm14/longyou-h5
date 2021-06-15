@@ -1,0 +1,24 @@
+@import "../../styles/base.scss";
+
+
+.basicBox{
+    margin-top: 32px;
+    overflow: hidden;
+    position: relative;
+    &-icon{
+        @include wh(8px,32px);
+        position: absolute;
+        background: #3296fa;
+        top: 32px;
+        left:28px;
+        }
+    .at-list__item:nth-child(2){
+        .at-list__item-container{
+            padding-left: 35px;
+        }
+        .item-content__info-title{
+            font-weight: 600;
+        }
+    }
+    
+}

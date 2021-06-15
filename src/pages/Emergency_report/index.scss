@@ -1,0 +1,26 @@
+@import "../../styles/base.scss";
+.taro_router {background:$backGround_blackF1;}
+.EmergencyReport-page{
+   
+    &-content{
+        padding: 32px;
+        &-tittle{
+            @include fc(36px,#fff);
+            font-weight: 600;
+        }
+
+        &-instru{
+            @include fc(32px,#fff);
+            line-height: 44px;
+            margin-top: 24px;
+        }
+
+        .submitButton{
+            margin-top: 96px;
+        }
+    }
+    
+}
+
+
+
