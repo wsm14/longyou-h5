@@ -4,7 +4,7 @@ import React, { Component, useState, useEffect } from 'react'
 import { AtButton } from "taro-ui"
 import { View, Image, Picker } from "@tarojs/components";
 import { AtList, AtListItem, AtAccordion, AtTextarea, AtImagePicker, AtSteps } from "taro-ui"
-import { findDetailById, completeProcessTask, noticeRecord } from "../../utils/Supervise"
+import { findCheckById, completeProcessTask, noticeRecord,findSuperviseCheckIdByNoticeId} from "../../utils/Supervise"
 import TittleBar from "../../components/TittleBar";
 import SignListItem from "../../components/SignListItem"
 import { isEmpty, uploadFile, goToUrl } from "../../utils/variable"
@@ -40,7 +40,8 @@ export default function Index() {
 
     //获取详情
     const getDetail = async () => {
-        const res = await findDetailById(businessId);
+        const result = await findSuperviseCheckIdByNoticeId(businessId);
+        const res = await findCheckById(result.data);
         setDetail(res.data);
     }
 
@@ -124,17 +125,20 @@ export default function Index() {
                     title='检查内容'
                     onClick={() => { setInspectOpen(!inspectOpen) }}
                 >
-                    <AtListItem title='检查类型' extraText={detail.businessTitle} />
-                    <AtListItem title='形象进度' extraText='基础阶段' />
-                    <AtListItem title='抽查内容：' note='内容如下抽查结果完成卡萨解放为份额为范围违法，自动换行' />
-                    <AtListItem title='现场安全抽查情况：' note='内容如下抽查结果完成卡萨解放为份额为范围违法，自动换行' />
+                    <AtListItem title='检查类型' extraText={detail?.checkTypeStr} />
+                    <AtListItem title='形象进度' extraText={detail?.imageProgressStr} />
+                    <AtListItem title='抽查内容：' note={detail?.checkContent} />
+                    <AtListItem title='现场安全抽查情况：' note={detail?.siteCheckSafety} />
                     <View className="SuperviseDetail-page-box1-content">
                         <View className="SuperviseDetail-page-box1-title">
                         附件信息：
                         </View>
                         <View className="SuperviseDetail-page-box1-imgContent">
-                            <Image src={index}></Image>
-                            <Image src={index}></Image>
+                        {
+                                !isEmpty(detail.recordFileList)&&detail.recordFileList.map(item=>(
+                                    <Image src={item.fileUrl}></Image>
+                                ))
+                            }
                         </View>
                     </View>
                 </AtAccordion>
@@ -147,18 +151,18 @@ export default function Index() {
                 >
                     <AtListItem title='整改类型' extraText={detail?.noticeTypeStr} />
                     <AtListItem title='所属科室' extraText={detail?.department} />
-                    <AtListItem title='检查人' extraText='文丹旭、谢霆锋' />
-                    <AtListItem title='检查日期' extraText={detail?.department} />
+                    <AtListItem title='检查人' extraText={detail?.checkUserNames} />
+                    <AtListItem title='检查日期' extraText={detail?.checkDate} />
                     <AtListItem title='通知书编号' extraText={detail?.noticeCode} />
-                    <AtListItem title='最迟整改完成日期' extraText={detail?.department} />
-                    <AtListItem title='存在问题：' note={detail.problem} />
+                    <AtListItem title='最迟整改完成日期' extraText={detail?.dudeDate} />
+                    <AtListItem title='存在问题：' note={detail?.problem} />
                     <View className="SuperviseDetail-page-box1-content">
                         <View className="SuperviseDetail-page-box1-title">
                         附件信息：
                         </View>
                         <View className="SuperviseDetail-page-box1-imgContent">
                         {
-                                !isEmpty(detail.attachmentFiles)&&detail.attachmentFiles.map(item=>(
+                                !isEmpty(detail.problemFileList)&&detail.problemFileList.map(item=>(
                                     <Image src={item.fileUrl}></Image>
                                 ))
                             }

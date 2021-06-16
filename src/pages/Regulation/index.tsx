@@ -18,7 +18,7 @@ export default function Index() {
 
 
     const userInfo = Taro.getStorageSync("userInfo") || {};
-    const [list, setList] = useState<any>([])
+    const [list, setList] = useState<any>([]);
 
     useDidShow(()=>{
         getList();
@@ -26,9 +26,9 @@ export default function Index() {
 
 
 
-    useEffect(() => {
-        getList();
-    }, [])
+    // useEffect(() => {
+    //     getList();
+    // }, [])
 
 
 
@@ -51,7 +51,10 @@ export default function Index() {
             processDefinitionKeys:"RectificationNotice"
         }
         const res = await ProcessTaskList(data);
-        setList(res.data.list.slice(0,5));
+        if (!isEmpty(res.data)) {
+            setList(res.data.list.slice(0,5));
+        }
+        
     }
 
 

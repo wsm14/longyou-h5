@@ -56,7 +56,7 @@ export default function Index() {
         getAllList();
     })
     useEffect(() => {
-        getAllList();
+        // getAllList();
         getDetail();
     }, [])
     useEffect(() => {

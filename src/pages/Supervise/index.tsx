@@ -21,6 +21,7 @@ export default function Index() {
     const [checkList, setCheckList] = useState<any>(['监督检查', '专项抽查']);
     const [progressList, setProgressList] = useState([]);//形象进度
     const [inspectList, setInspectList] = useState([]);//检查人列表
+    const [project, setProject] = useState<any>({});
     const {
         checkType,//检查类型
         ProgressValue,//形象进度选择第几项
@@ -33,7 +34,7 @@ export default function Index() {
         checkResult,//整改类型
         checkUserValue,//检查人选择的第几项
         checkDate,//检查日期
-        lastDate,//最迟整改日期
+        dudeDate,//最迟整改日期
         problem,//存在问题
         problemAttachmentIds = [],//问题附件
         problemFiles = [],//问题图片
@@ -61,6 +62,7 @@ export default function Index() {
         const result: any = await GetProjectDetail(projectId);
         const res: any = await getPeople(result.data.govOrgId);
         setInspectList(res.data);
+        setProject(result.data);
     }
 
     //当值发生改变
@@ -126,7 +128,7 @@ export default function Index() {
 
         //当检查类型等于限期整改
         if (checkResult == 1) {
-            if (isEmpty(lastDate)) {
+            if (isEmpty(dudeDate)) {
                 Taro.showToast({ title: `请填写最迟整改日期`, icon: "none", duration: 1000 });
                 return false;
             }
@@ -165,7 +167,7 @@ export default function Index() {
         <View className="Supervise-page pageStyle">
             <View className="Supervise-page-content">
                 <View className="Supervise-page-content-tittle">监督检查</View>
-                <View className="Supervise-page-content-instru">项目A二期一标段</View>
+                <View className="Supervise-page-content-instru">{project?.projectName}</View>
 
                 <View className="Supervise-page-content-box baseBox">
                     <Picker mode='selector' range={checkList} onChange={(e) => { handleChange("Picker", "checkType", e) }}>
@@ -240,8 +242,8 @@ export default function Index() {
                     }
                     {
                         (isEmpty(checkResult) || checkResult == 1) && (
-                            <Picker mode='date' onChange={(e) => { handleChange("Picker", "lastDate", e) }}>
-                                <SignListItem title="最迟整改日期:" extraText={lastDate || "请选择"} arrow="right"></SignListItem>
+                            <Picker mode='date' onChange={(e) => { handleChange("Picker", "dudeDate", e) }}>
+                                <SignListItem title="最迟整改日期:" extraText={dudeDate || "请选择"} arrow="right"></SignListItem>
                             </Picker>
                         )
                     }

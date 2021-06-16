@@ -36,10 +36,19 @@ export const supervisedCheckCreate = (data) => {
 }
 
 
-//待办事项详情
-export const findDetailById = (noticeId:string | number | undefined) =>{
+//监督检查-获取监督检查详情的id
+export const findSuperviseCheckIdByNoticeId = (noticeId:string | number | undefined) =>{
   return doRequestAction({
-    url:`/api/qualitysafety/notice/${noticeId}/findDetailById`,
+    url:`/api/qualitysafety/notice/${noticeId}/findSuperviseCheckIdByNoticeId`,
+  })
+}
+
+
+
+//监督检查-待办事项详情
+export const findCheckById = (checkId:string | number | undefined) =>{
+  return doRequestAction({
+    url:`/api/qualitysafety/supervisedCheck/${checkId}/findCheckById`,
   })
 }
 

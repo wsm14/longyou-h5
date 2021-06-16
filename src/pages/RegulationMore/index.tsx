@@ -3,19 +3,18 @@ import React, { Component, useState, useEffect } from 'react'
 import { View, ScrollView } from "@tarojs/components";
 import { ProcessTaskList } from "../../utils/main"
 import { AtList, AtListItem } from "taro-ui"
-import {isEmpty} from "../../utils/variable"
+import {isEmpty,goToUrl} from "../../utils/variable"
 import "./index.scss";
 
 // 图片引入
 
 export default function Index() {
 
-    const [list, setList] = useState<any>([]);
-    const [pageNum, setPageNum] = useState<number>(0);
-
-    useEffect(() => {
+    const [list, setList] = useState<any>([]);//列表
+    const [pageNum, setPageNum] = useState<number>(0);//页码
+    useDidShow(()=>{
         getList();
-    }, [])
+    })
 
     const getList = async () => {
         const data = {
@@ -38,7 +37,29 @@ export default function Index() {
         getList();
     }
 
+     //跳转
+     const jump = (item) =>{
 
+        if (item.taskKey == "submit") {
+            goToUrl({
+                url:"SuperviseDetail",
+                param:{
+                    businessId:item.businessId,
+                    taskId:item.taskId
+                }
+            })
+        }else if (item.taskKey == "approval") {
+            goToUrl({
+                url:"SuperviseDetailz",
+                param:{
+                    businessId:item.businessId,
+                    taskId:item.taskId
+                }
+            })
+        }
+
+        
+    }
 
     return (
         <View className="RegulationMore-Page">
@@ -56,7 +77,7 @@ export default function Index() {
                         <View>
                             {
                                 list.map(item => (
-                                    <AtListItem title={item.taskName} note={item.businessName} key={item.processInstanceId} />
+                                    <AtListItem title={item.taskName} note={item.businessName} key={item.processInstanceId} onClick={()=>{jump(item)}}/>
                                 ))
                             }
                         </View>
