@@ -123,77 +123,43 @@ export default function Index() {
     }
 
     return (
-        <View className="EmergencyInfo-page pageStyle">
-            <View className="EmergencyInfo-page-content">
-                <View className="EmergencyInfo-page-content-tittle">应急管理</View>
+        <View className="Complaint-page pageStyle">
+            <View className="Complaint-page-content">
+                <View className="Complaint-page-content-tittle">应急管理</View>
+                <AccordionBox projectDetail={projectDetail}></AccordionBox>    
 
-                <AccordionBox projectDetail={projectDetail}></AccordionBox>
-
-
-                <BasicBox title="本项目应急救援队" style={{ paddingBottom: "12px" }}>
+                <BasicBox title="姓名投诉建议" style={{ paddingBottom: "12px" }}>
                     <AtInput
-                        title='队长'
+                        title='姓名'
                         value={teamLeaderName}
                         type='text'
-                        placeholder='请输入队长姓名'
+                        placeholder='请输入姓名'
                         onChange={(e) => { handleChange("teamLeaderName", e) }}
                     />
                     <AtInput
                         title='联系电话'
                         value={teamLeaderPhone}
                         type='number'
-                        placeholder='请输入队长电话'
+                        placeholder='请输入联系电话'
                         onChange={(e) => { handleChange("teamLeaderPhone", e) }}
                     />
                     <AtInput
-                        title='副队长'
+                        title='主题'
                         value={teamViceName}
                         type='text'
-                        placeholder='请输入副队长姓名'
+                        placeholder='请输入主题'
                         onChange={(e) => { handleChange("teamViceName", e) }}
                     />
-                    <AtInput
-                        title='联系电话'
-                        value={teamVicePhone}
-                        type='number'
-                        placeholder='请输入副队长电话'
-                        onChange={(e) => { handleChange("teamVicePhone", e) }}
-                    />
-                    <TittleBar title="队员名单:">
+                    <TittleBar title="内容:">
                         <AtTextarea
                             count={false}
                             value={teamMembers}
-                            placeholder='请输入队员姓名'
+                            placeholder='请输入内容'
                             className="titleBar-textarea"
                             onChange={(e) => { handleChange("teamMembers", e) }}
                         />
                     </TittleBar>
-                </BasicBox>
-
-
-                <BasicBox title="应急避难场所">
-                    <AtInput
-                        title='位置'
-                        value={refuge}
-                        type='text'
-                        placeholder='请输入地理位置'
-                        onChange={(e) => { handleChange("refuge", e) }}
-                    />
-                    <AtInput
-                        title='联系人'
-                        value={refugeLinkMan}
-                        type='text'
-                        placeholder='请输入联系人'
-                        onChange={(e) => { handleChange("refugeLinkMan", e) }}
-                    />
-                    <AtInput
-                        title='联系电话'
-                        value={refugeLinkPhone}
-                        type='text'
-                        placeholder='请输入联系电话'
-                        onChange={(e) => { handleChange("refugeLinkPhone", e) }}
-                    />
-                    <TittleBar title="应急避难所照片:" style={{ paddingBottom: "12px" }}>
+                    <TittleBar title="照片:" style={{ paddingBottom: "12px" }}>
                         <AtImagePicker
                             files={files}
                             onChange={(files, operationType, index) => { changePicker("files", files, operationType, index) }}

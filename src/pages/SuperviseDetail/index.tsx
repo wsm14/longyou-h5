@@ -4,7 +4,7 @@ import React, { Component, useState, useEffect } from 'react'
 import { AtButton } from "taro-ui"
 import { View, Image, Picker } from "@tarojs/components";
 import { AtList, AtListItem, AtAccordion, AtTextarea, AtImagePicker, AtSteps } from "taro-ui"
-import { findCheckById, completeProcessTask, noticeRecord,findSuperviseCheckIdByNoticeId} from "../../utils/Supervise"
+import { findCheckById, completeProcessTask, noticeRecord, findSuperviseCheckIdByNoticeId } from "../../utils/Supervise"
 import TittleBar from "../../components/TittleBar";
 import SignListItem from "../../components/SignListItem"
 import { isEmpty, uploadFile, goToUrl } from "../../utils/variable"
@@ -94,7 +94,7 @@ export default function Index() {
             return false;
         }
 
-        
+
         editDetail.assigneeId = otherdetail[0].assigneeId;
         editDetail.noticeId = businessId;
         editDetail.assigneeName = otherdetail[0].assigneeName;
@@ -102,8 +102,8 @@ export default function Index() {
         editDetail.attachmentIds = attachmentIds.join();
         const res = await completeProcessTask(editDetail);
         if (res.code == "200") {
-            Taro.showToast({title: "提交成功",icon: "success", duration: 1000}).then(()=>{
-                goToUrl({type:"navigateBack"});
+            Taro.showToast({ title: "提交成功", icon: "success", duration: 1000 }).then(() => {
+                goToUrl({ type: "navigateBack" });
             })
         }
 
@@ -131,11 +131,11 @@ export default function Index() {
                     <AtListItem title='现场安全抽查情况：' note={detail?.siteCheckSafety} />
                     <View className="SuperviseDetail-page-box1-content">
                         <View className="SuperviseDetail-page-box1-title">
-                        附件信息：
+                            附件信息：
                         </View>
                         <View className="SuperviseDetail-page-box1-imgContent">
-                        {
-                                !isEmpty(detail.recordFileList)&&detail.recordFileList.map(item=>(
+                            {
+                                !isEmpty(detail.recordFileList) && detail.recordFileList.map(item => (
                                     <Image src={item.fileUrl}></Image>
                                 ))
                             }
@@ -155,14 +155,14 @@ export default function Index() {
                     <AtListItem title='检查日期' extraText={detail?.checkDate} />
                     <AtListItem title='通知书编号' extraText={detail?.noticeCode} />
                     <AtListItem title='最迟整改完成日期' extraText={detail?.dudeDate} />
-                    <AtListItem title='存在问题：' note={detail?.problem} />
+                    <AtListItem title='存在问题：' note={detail.problem} />
                     <View className="SuperviseDetail-page-box1-content">
                         <View className="SuperviseDetail-page-box1-title">
-                        附件信息：
+                            附件信息：
                         </View>
                         <View className="SuperviseDetail-page-box1-imgContent">
-                        {
-                                !isEmpty(detail.problemFileList)&&detail.problemFileList.map(item=>(
+                            {
+                                !isEmpty(detail.problemFileList) && detail.problemFileList.map(item => (
                                     <Image src={item.fileUrl}></Image>
                                 ))
                             }
@@ -181,7 +181,7 @@ export default function Index() {
                         onChange={(e) => { handleChange("Textarea", "approvalOpinion", e) }}
                     />
                 </TittleBar>
-                <TittleBar title="整改情况描述：">
+                <TittleBar title="附件信息：">
                     <AtImagePicker
                         files={attachmentFiles}
                         onChange={(files, operationType, index) => { changeImage("attachmentFiles", files, operationType, index) }}

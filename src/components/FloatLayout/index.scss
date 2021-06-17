@@ -4,7 +4,14 @@
 .FloatLayout-button{
     display: flex;
     align-items: center;
-    padding: 10px 24px 24px 24px;
+    width:100%;
+    box-sizing: border-box;
+    padding: 24px 24px 0px 24px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 50px;
+    z-index: 2;
     taro-view-core{
         flex:1
     }
@@ -20,4 +27,8 @@
     taro-view-core:nth-child(3){
         text-align: right;
     }
+}
+
+.at-float-layout .layout-body{
+    padding-top: 80px;
 }

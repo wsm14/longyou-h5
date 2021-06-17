@@ -337,14 +337,14 @@ export default function Index() {
                 sort: 1,
             }]
         }
-        if (!data.fileAttachment) {
-            Taro.showToast({
-                title: "附件不能为空",
-                icon: "none",
-                duration: 1000
-            });
-            return
-        }
+        // if (!data.fileAttachment) {
+        //     Taro.showToast({
+        //         title: "附件不能为空",
+        //         icon: "none",
+        //         duration: 1000
+        //     });
+        //     return
+        // }
 
         setLoading(true);
         const res = await submitSafe(data);
@@ -455,6 +455,7 @@ export default function Index() {
                 checkboxOption={checkboxOption}
                 onColse={() => { setisOpened(false) }}
                 isOpened={isOpened}
+                floatName={"编辑项目"}
                 handleChange={(e) => { handleChange(e) }}
                 checkedList={checkList}
                 onOK={() => { determine() }}

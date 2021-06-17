@@ -1,0 +1,26 @@
+@import "../../styles/base.scss";
+
+
+.accordionBox{
+    margin-top: 32px;
+    overflow: hidden;
+    position: relative;
+    &-address{
+        padding: 24px 24px 12px 24px;
+        @include fc(32px,#262626);
+        line-height: 44px;
+    }
+
+    &-icon{
+        @include wh(8px,32px);
+        position: absolute;
+        background: #3296fa;
+        top: 37px;
+        left:28px;
+        }
+        .at-accordion__info{
+            padding-left: 35px;
+            font-weight: 600;
+        }
+    
+}

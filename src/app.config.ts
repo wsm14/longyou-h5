@@ -17,6 +17,8 @@ export default {
     "pages/Supervise/index",//监督检查
     "pages/SuperviseDetail/index",//监督检查-整改
     "pages/SuperviseDetailz/index",//监督检查-整改-政府
+    "pages/Complaint/index",//投诉建议
+    "pages/Evaluate/index",//投诉建议
   ],
   window: {
     backgroundTextStyle: 'light',

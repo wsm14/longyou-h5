@@ -4,13 +4,14 @@ import React, { Component, useState, useEffect } from 'react'
 import { AtButton } from "taro-ui"
 import { View, Text, Picker } from "@tarojs/components";
 import { AtListItem, AtTextarea, AtImagePicker } from "taro-ui"
-
+import FloatLayout from "../../components/FloatLayout"
 import TittleBar from "../../components/TittleBar"
 import SignListItem from "../../components/SignListItem"
-import { subList, getPeople,supervisedCheckCreate} from "../../utils/Supervise";
+import { subList, getPeople, supervisedCheckCreate } from "../../utils/Supervise";
 import { GetProjectDetail } from "../../utils/main";
 import "./index.scss"
-import { isEmpty, uploadFile,goToUrl} from '../../utils/variable';
+import { isEmpty, uploadFile, goToUrl } from '../../utils/variable';
+
 
 export default function Index() {
 
@@ -20,7 +21,10 @@ export default function Index() {
     const [selector, setSelector] = useState<any>(['无需整改', '限期整改', '局部停工', "全面停工", "拉闸限电"]);
     const [checkList, setCheckList] = useState<any>(['监督检查', '专项抽查']);
     const [progressList, setProgressList] = useState([]);//形象进度
-    const [inspectList, setInspectList] = useState([]);//检查人列表
+    const [inspectList, setInspectList] = useState<any>([]);//检查人列表
+    const [inspectOpen, setInspectOpen] = useState<boolean>(false);//检查人弹窗
+    const [listOption, setListOption] = useState<any>([]);//选择的数组
+    const [inspectPeople, setInspectPeople] = useState<any>([]);//检查数组
     const [project, setProject] = useState<any>({});
     const {
         checkType,//检查类型
@@ -61,6 +65,11 @@ export default function Index() {
         const projectId = Taro.getStorageSync('projectId') || "";
         const result: any = await GetProjectDetail(projectId);
         const res: any = await getPeople(result.data.govOrgId);
+        for (let item of res.data) {
+            item.label = item.realName;
+            item.value = item.userId;
+            item.chooice = 0;
+        }
         setInspectList(res.data);
         setProject(result.data);
     }
@@ -78,12 +87,43 @@ export default function Index() {
                 detail[name] = e.detail.value
                 detail.imageProgress = progressList[e.detail.value].configCode
                 break;
-            case "PickerList1":
-                detail[name] = e.detail.value
-                detail.checkUserIds = inspectList[e.detail.value].userId
-                break;
         }
         setDetail({ ...detail })
+    }
+
+
+    //打开检查人弹窗
+    const openModal = () =>{
+        const arr: [] = inspectList.filter(function (item) {
+            return item.choose == 1;
+        }).map(item => {
+            return item.value
+        });
+
+        setListOption(arr)
+        setInspectOpen(true)
+    }
+
+    //多选
+    const changeValue = (e) => {
+        setListOption(e)
+    }
+
+    //确定
+    const determine = () => {
+        let inspectArr:[] = [];
+        for(let item of inspectList){
+
+            if (listOption.includes(item.value)) {
+                item.choose = 1;
+                inspectArr.push(item.label)
+            }else{
+                item.choose = 0
+            }
+        }
+        setInspectPeople(inspectArr);
+        setInspectList(inspectList);
+        setInspectOpen(false)
     }
 
 
@@ -108,14 +148,15 @@ export default function Index() {
     }
 
 
-    const submit = async() => {
+    const submit = async () => {
+        detail.checkUserIds =  listOption.join();
         const list = {
             checkType: "检查类型",
             imageProgress: "形象进度",
             checkContent: "抽查内容",
             attachmentIds: "附件",
             checkResult: "整改类型",
-            // checkUserIds: "检查人",
+            checkUserIds: "检查人",
             checkDate: "检查日期",
         }
 
@@ -154,12 +195,11 @@ export default function Index() {
 
         const res = await supervisedCheckCreate(detail);
         if (res.code == "200") {
-            Taro.showToast({title: "提交成功",icon: "success", duration: 1000}).then(()=>{
-                goToUrl({type:"navigateBack"});
+            Taro.showToast({ title: "提交成功", icon: "success", duration: 1000 }).then(() => {
+                goToUrl({ type: "navigateBack" });
             })
         }
     }
-
 
 
 
@@ -229,9 +269,9 @@ export default function Index() {
                         <SignListItem title="整改类型:" extraText={selector[checkResult] || "请选择"} arrow="right"></SignListItem>
                     </Picker>
                     <AtListItem title="检查科室:" extraText="系统自动获取" />
-                    <Picker mode='selector' range={inspectList} onChange={(e) => { handleChange("PickerList1", "checkUserValue", e) }} rangeKey={"realName"}>
-                        <SignListItem title="检查人:" extraText={inspectList[checkUserValue]?.realName||"请选择"} arrow="right"></SignListItem>
-                    </Picker>
+                    {/* <Picker mode='selector' range={inspectList} onChange={(e) => { handleChange("PickerList1", "checkUserValue", e) }} rangeKey={"realName"}> */}
+                    <SignListItem  title="检查人:" extraText={inspectPeople.join() || "请选择"} arrow="right" click={openModal}></SignListItem>
+                    {/* </Picker> */}
                     <Picker mode='date' onChange={(e) => { handleChange("Picker", "checkDate", e) }}>
                         <SignListItem title="检查日期:" extraText={checkDate || "请选择"} arrow="right"></SignListItem>
                     </Picker>
@@ -270,6 +310,15 @@ export default function Index() {
 
                 </View>
 
+                <FloatLayout
+                    checkboxOption={inspectList}
+                    onColse={() => { setInspectOpen(false) }}
+                    floatName={"检查人"}
+                    isOpened={inspectOpen}
+                    handleChange={(e) => { changeValue(e) }}
+                    checkedList={listOption}
+                    onOK={() => { determine() }}
+                />
                 <AtButton type='primary' className="submitButton noStyleButton" onClick={() => { submit() }}>提交</AtButton>
             </View>
         </View >

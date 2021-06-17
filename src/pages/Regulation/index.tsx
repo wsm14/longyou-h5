@@ -51,10 +51,7 @@ export default function Index() {
             processDefinitionKeys:"RectificationNotice"
         }
         const res = await ProcessTaskList(data);
-        if (!isEmpty(res.data)) {
-            setList(res.data.list.slice(0,5));
-        }
-        
+        setList(res.data.list.slice(0,5));
     }
 
 

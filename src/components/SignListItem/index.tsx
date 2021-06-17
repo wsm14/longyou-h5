@@ -12,12 +12,13 @@ interface Interface {
     title: string
     extraText?: string
     arrow?:any
+    click?:any
 }
 
 export default function index(props:Interface) {
-    const {title,extraText,arrow} = props;
+    const {title,extraText,arrow,click} = props;
     return (
-        <div className="SignListItem-page">
+        <div className="SignListItem-page" onClick={click}>
             <AtListItem title={title} arrow={arrow} extraText={extraText}/>
             <View className="SignListItem-page-sign">*</View>
         </div>

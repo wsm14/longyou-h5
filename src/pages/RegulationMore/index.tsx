@@ -23,10 +23,11 @@ export default function Index() {
             processDefinitionKeys:  "RectificationNotice"
         }
         const res = await ProcessTaskList(data);
-        if (!isEmpty(res.data)) {
+        if (!isEmpty(res.data.list)) {
             setList(list.concat(res.data.list));
             setPageNum(pageNum + 1);
         }else{
+            setList(list.concat(res.data.list));
             Taro.showToast({title: "暂无更多数据",icon: "none",duration: 1000});
               return false;
         }

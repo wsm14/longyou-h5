@@ -13,16 +13,17 @@ interface Interface {
     isOpened:boolean,
     handleChange:any,
     checkedList:any,
-    onOK:any
+    onOK:any,
+    floatName:any,
   }
 export default function Index(props:Interface) {
-    const {checkboxOption,onColse,isOpened,handleChange,checkedList,onOK} = props;
+    const {checkboxOption,onColse,isOpened,handleChange,checkedList,onOK,floatName} = props;
     return (
-        <div>
+        <div className="float-page">
             <AtFloatLayout isOpened={isOpened} scrollY onClose={()=>{onColse()}}>
                 <View className="FloatLayout-button">
                     <View onClick={()=>{onColse()}}>取消</View>
-                    <View>编辑项目</View>
+                    <View>{floatName}</View>
                     <View onClick={()=>{onOK()}}>确定</View>
                 </View>
                 <AtCheckbox

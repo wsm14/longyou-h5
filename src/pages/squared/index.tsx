@@ -12,7 +12,7 @@ import {
 import { GetProgectIndexLevel } from "../../utils/main"
 import { IsCreateManagement } from "../../utils/emergency"
 import { isEmpty, goToUrl } from "../../utils/variable"
-import {LOGINOUT} from "../../utils/main"
+import { LOGINOUT } from "../../utils/main"
 // import QRcode_0 from "../../static/images/QRcode_1.png";
 // import QRcode_1 from "../../static/images/QRcode_1.png";
 // import QRcode_2 from "../../static/images/QRcode_2.png";
@@ -57,7 +57,7 @@ function Index() {
   const location = useRouter().params;
   // const haveIsOnceEmergency = Taro.getStorageSync("haveIsOnceEmergency");
   // const [isOpenedPlan, setIsOpenedPlan] = useState<any>(false);
-  // const [isOpenedAdvice, setIsOpenedAdvice] = useState<any>(false);
+  const [isOpenedAdvice, setIsOpenedAdvice] = useState<any>(false);
   // const [isCreateBranch, setIsCreateBranch] = useState<any>(false);
 
 
@@ -120,7 +120,7 @@ function Index() {
       case 1:
         //判断是否登录
         if (isEmpty(userInfo.userId)) {
-          goToUrl({ url: "main",param:{userType:1}})
+          goToUrl({ url: "main", param: { userType: 1 } })
         } else {
           //登录的是否是政府或者超级管理员
           if (userInfo.typeStr == "管理员" || userInfo.typeStr == "政府") {
@@ -142,10 +142,10 @@ function Index() {
       case 3:
         //判断是否登录
         if (isEmpty(userInfo.userId)) {
-          goToUrl({ url: "main",param:{userType:2}})
+          goToUrl({ url: "main", param: { userType: 2 } })
         } else {
           //登录的是否是政府或者超级管理员
-          if (userInfo.typeStr == "企业" || userInfo.typeStr == "银行" || userInfo.typeStr == "管理员") {
+          if (userInfo.typeStr == "企业" || userInfo.typeStr == "银行" || userInfo.typeStr == "管理员" || userInfo.typeStr == "项目") {
             goToUrl({ url: "Regulation" })
           } else {
             setModalContent(2);
@@ -154,26 +154,17 @@ function Index() {
         }
         break;
       case 4:
-        setTimeout(() => {
-          Taro.navigateTo({
-            url: `/pages/Construction/index`
-          });
-        }, 500);
+        goToUrl({ url: "Construction" })
         break;
       case 6:
-        setTimeout(() => {
-          Taro.navigateTo({
-            url: `/pages/Project_information/index`
-          });
-        }, 500);
+        goToUrl({ url: "Project_information" })
         break;
       case 5:
-        setTimeout(() => {
-          Taro.navigateTo({
-            url: `/pages/Visit/index`
-          });
-        }, 500);
+        goToUrl({ url: "Visit" })
         break;
+      // case 8:
+      //   setIsOpenedAdvice(true);
+      //   break;
       default:
         Taro.showToast({
           title: "功能建设中",
@@ -184,14 +175,14 @@ function Index() {
     }
   }
 
-const handleConfirm = async()=>{
-  const res = await LOGINOUT();
-  if (res.code == "200") {
-    Taro.removeStorageSync('userInfo');
-    goToUrl({url:"main",param:{userType:modalContent}})
-    setModalOpen(false);
+  const handleConfirm = async () => {
+    const res = await LOGINOUT();
+    if (res.code == "200") {
+      Taro.removeStorageSync('userInfo');
+      goToUrl({ url: "main", param: { userType: modalContent } })
+      setModalOpen(false);
+    }
   }
-}
 
   const getTime = () => {
     let date = new Date(); //获得当前时间
@@ -262,13 +253,13 @@ const handleConfirm = async()=>{
             </View>
             <View className="codeRightBox">
               <View className="projectLevelText">
-                项目等级：{detail.levelStr || "--"}
+                项目等级：{detail?.levelStr || "--"}
               </View>
               <View
                 className="projectName"
                 style={{ WebkitBoxOrient: "vertical", WebkitLineClamp: 2 }}
               >
-                {detail.projectName || "加载中"}
+                {detail?.projectName || "加载中"}
               </View>
             </View>
           </View>
@@ -345,10 +336,10 @@ const handleConfirm = async()=>{
         isOpened={modalOpen}
         cancelText='取消'
         confirmText='确认'
-        onClose={()=>{setModalOpen(false)}}
-        onCancel={()=>{setModalOpen(false)}}
-        onConfirm={()=>{handleConfirm()}}
-        content={modalContent==1?"您已登录企业账号,请确认是否切换为政府账号登录":"您已登录政府账号,请确认是否切换为企业账号登录"}
+        onClose={() => { setModalOpen(false) }}
+        onCancel={() => { setModalOpen(false) }}
+        onConfirm={() => { handleConfirm() }}
+        content={modalContent == 1 ? "您已登录企业账号,请确认是否切换为政府账号登录" : "您已登录政府账号,请确认是否切换为企业账号登录"}
       />
 
 
@@ -359,15 +350,15 @@ const handleConfirm = async()=>{
         <AtActionSheetItem onClick={() => handleClick(2)}>
           健康码
         </AtActionSheetItem>
-      </AtActionSheet>
-      <AtActionSheet isOpened={isOpenedAdvice} cancelText="取消">
-        <AtActionSheetItem onClick={() => handleClickAdvice(1)}>
+      </AtActionSheet> */}
+      <AtActionSheet isOpened={isOpenedAdvice} cancelText="取消" onCancel={()=>{setIsOpenedAdvice(false)}} onClose={()=>{setIsOpenedAdvice(false)}}>
+        <AtActionSheetItem onClick={()=>{goToUrl({url:"Evaluate"})}}>
           社会评价
         </AtActionSheetItem>
-        <AtActionSheetItem onClick={() => handleClickAdvice(2)}>
+        <AtActionSheetItem onClick={()=>{goToUrl({url:"Complaint"})}}>
           投诉建议
         </AtActionSheetItem>
-      </AtActionSheet> */}
+      </AtActionSheet>
     </View>
   );
 }

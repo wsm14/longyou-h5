@@ -67,7 +67,7 @@ export default function Index() {
 
     const {
         workerName,//员工姓名
-        gender,//性别
+        genderStr,//性别
         age,//年龄
         cellPhone,//手机号码
         corpName,//所属公司
@@ -99,7 +99,7 @@ export default function Index() {
                                 <AtList>
                                     <View>
                                         <AtListItem title='工人姓名：' extraText={workerName} />
-                                        <AtListItem title='工人性别：' extraText={gender} />
+                                        <AtListItem title='工人性别：' extraText={genderStr} />
                                         <AtListItem title='工人年龄: ' extraText={age} />
                                         <AtListItem title='手机号码：' extraText={cellPhone} />
                                         <AtListItem title='所属企业：' extraText={corpName} />
