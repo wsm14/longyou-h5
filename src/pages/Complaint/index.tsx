@@ -13,7 +13,7 @@ import address from "../../static/images/address2.png"
 import { isEmpty, uploadFile, goToUrl } from "../../utils/variable"
 import regex from "../../utils/regex"
 import AccordionBox from "../../components/AccordionBox"
-import { EmergencyManagementCreate } from "../../utils/emergency"
+import { complaintCreate } from "../../utils/other"
 import { GetProjectDetail } from "../../utils/main"
 
 export default function Index() {
@@ -21,25 +21,17 @@ export default function Index() {
     const [detail, setDetail] = useState<any>({});//提交详情
     const [projectDetail, setProjectDetail] = useState({});//项目详情
     const {
-        teamLeaderName,//队长
-        teamLeaderPhone,//队长电话
-        teamViceName,//副队长
-        teamVicePhone,//副队长电话
-        teamMembers,//队员名单
-        refuge,//避难所地点
-        refugeLinkMan,//避难所联系人
-        refugeLinkPhone,//避难所电话
+        suggesterName,//姓名
+        suggesterPhone,//联系电话
+        suggestTheme,//主题
+        suggestContent,//内容
         fileIds = [],//图片
         files = []//图片
     } = detail
 
 
     useEffect(() => {
-
-
         getDetail()
-
-
     }, [])
 
 
@@ -79,15 +71,11 @@ export default function Index() {
     const submit = async () => {
 
         const list = {
-            teamLeaderName: "队长姓名",
-            teamLeaderPhone: "队长电话",
-            teamViceName: "副队长姓名",
-            teamVicePhone: "副队长电话",
-            teamMembers: "队员名单",
-            refuge: "避难所地点",
-            refugeLinkMan: "避难所联系人",
-            refugeLinkPhone: "避难所电话",
-            fileIds: "应急避难所照片",
+            suggesterName:"姓名",//姓名
+            suggesterPhone:"联系电话",//联系电话
+            suggestTheme:"主题",//主题
+            suggestContent:"内容",//内容
+            fileIds:"照片",
         }
         for (let key in list) {
             if (isEmpty(detail[key])) {
@@ -97,24 +85,14 @@ export default function Index() {
         }
 
 
-        if (!regex.isMobile.test(detail.teamLeaderPhone)) {
-            Taro.showToast({ title: `请输入正确的队长电话`, icon: "none", duration: 1000 });
-            return false;
-        }
-
-        if (!regex.isMobile.test(detail.teamVicePhone)) {
-            Taro.showToast({ title: `请输入正确的副队长电话`, icon: "none", duration: 1000 });
-            return false;
-        }
-
-        if (!regex.isMobile.test(detail.refugeLinkPhone)) {
-            Taro.showToast({ title: `请输入正确的联系人电话`, icon: "none", duration: 1000 });
+        if (!regex.isMobile.test(detail.suggesterPhone)) {
+            Taro.showToast({ title: `请输入正确的联系电话`, icon: "none", duration: 1000 });
             return false;
         }
 
         detail.fileIds = fileIds.join();
         console.log(detail);
-        const res = await EmergencyManagementCreate(detail)
+        const res = await complaintCreate(detail)
         if (res.code == "200") {
             Taro.showToast({ title: "提交成功", icon: "success", duration: 1000 }).then(() => {
                 goToUrl({ type: "navigateBack" });
@@ -125,38 +103,38 @@ export default function Index() {
     return (
         <View className="Complaint-page pageStyle">
             <View className="Complaint-page-content">
-                <View className="Complaint-page-content-tittle">应急管理</View>
+                <View className="Complaint-page-content-tittle">投诉建议</View>
                 <AccordionBox projectDetail={projectDetail}></AccordionBox>    
 
                 <BasicBox title="姓名投诉建议" style={{ paddingBottom: "12px" }}>
                     <AtInput
                         title='姓名'
-                        value={teamLeaderName}
+                        value={suggesterName}
                         type='text'
                         placeholder='请输入姓名'
-                        onChange={(e) => { handleChange("teamLeaderName", e) }}
+                        onChange={(e) => { handleChange("suggesterName", e) }}
                     />
                     <AtInput
                         title='联系电话'
-                        value={teamLeaderPhone}
+                        value={suggesterPhone}
                         type='number'
                         placeholder='请输入联系电话'
-                        onChange={(e) => { handleChange("teamLeaderPhone", e) }}
+                        onChange={(e) => { handleChange("suggesterPhone", e) }}
                     />
                     <AtInput
                         title='主题'
-                        value={teamViceName}
+                        value={suggestTheme}
                         type='text'
                         placeholder='请输入主题'
-                        onChange={(e) => { handleChange("teamViceName", e) }}
+                        onChange={(e) => { handleChange("suggestTheme", e) }}
                     />
                     <TittleBar title="内容:">
                         <AtTextarea
                             count={false}
-                            value={teamMembers}
+                            value={suggestContent}
                             placeholder='请输入内容'
                             className="titleBar-textarea"
-                            onChange={(e) => { handleChange("teamMembers", e) }}
+                            onChange={(e) => { handleChange("suggestContent", e) }}
                         />
                     </TittleBar>
                     <TittleBar title="照片:" style={{ paddingBottom: "12px" }}>

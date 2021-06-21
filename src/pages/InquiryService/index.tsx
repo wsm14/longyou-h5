@@ -86,11 +86,12 @@ export default function Index() {
                 <View className="InquiryService-page-content-tittle">劳务信息</View>
                 <View className="InquiryService-page-content-box baseBox">
                     <AtInput
-                        title='标准五个字:'
+                        title='身份证/姓名:'
                         value={name}
                         type='text'
                         placeholder="请输入身份证号或者姓名"
                         onChange={(e) => { handleChange(e) }}
+                        className="inputStyle"
                     />
                     <AtButton type='primary' className="submitButton noStyleButton" onClick={() => { submit() }}>查询</AtButton>
                     {

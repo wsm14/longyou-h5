@@ -124,8 +124,8 @@ export default function Index() {
                             <View className="listItem" key={item.name}>
                                 <View className="listItem-left">{item.name}</View>
                                 <View className="listItem-right">
-                                    {item.list.map((val,ind) => (
-                                        <AtIcon value='star-2' size='10' color={ind<item.count?"orange":"gray"} key={val}></AtIcon>
+                                    {item.list.map((val, ind) => (
+                                        <AtIcon value='star-2'  color={ind < item.count ? "#FFD500" : "#E1E5EF"} key={val}></AtIcon>
                                     ))}
                                 </View>
                             </View>

@@ -30,3 +30,8 @@ export const supervisedCheckSubmit: string = "/api/qualitysafety/supervisedCheck
 
 //待办事项
 export const completeProcessTask: string = '/api/qualitysafety/notice/completeProcessTask';//整改提交
+
+
+//投诉建议
+
+export const complaint:string = "/api/pm/complaintSuggest/create";//投诉建议提交

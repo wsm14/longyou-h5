@@ -156,15 +156,21 @@ function Index() {
       case 4:
         goToUrl({ url: "Construction" })
         break;
-      case 6:
-        goToUrl({ url: "Project_information" })
-        break;
       case 5:
         goToUrl({ url: "Visit" })
         break;
-      // case 8:
-      //   setIsOpenedAdvice(true);
-      //   break;
+      case 6:
+        goToUrl({ url: "Project_information" })
+        break;
+      case 7:
+        goToUrl({ url: "RedConstruct" })
+        break;
+      case 8:
+        setIsOpenedAdvice(true);
+        break;
+      case 9:
+        goToUrl({ url: "Publicity" })
+        break;
       default:
         Taro.showToast({
           title: "功能建设中",
@@ -351,11 +357,11 @@ function Index() {
           健康码
         </AtActionSheetItem>
       </AtActionSheet> */}
-      <AtActionSheet isOpened={isOpenedAdvice} cancelText="取消" onCancel={()=>{setIsOpenedAdvice(false)}} onClose={()=>{setIsOpenedAdvice(false)}}>
-        <AtActionSheetItem onClick={()=>{goToUrl({url:"Evaluate"})}}>
+      <AtActionSheet isOpened={isOpenedAdvice} cancelText="取消" onCancel={() => { setIsOpenedAdvice(false) }} onClose={() => { setIsOpenedAdvice(false) }}>
+        <AtActionSheetItem onClick={() => { goToUrl({ url: "Evaluate" }) }}>
           社会评价
         </AtActionSheetItem>
-        <AtActionSheetItem onClick={()=>{goToUrl({url:"Complaint"})}}>
+        <AtActionSheetItem onClick={() => { goToUrl({ url: "Complaint" }) }}>
           投诉建议
         </AtActionSheetItem>
       </AtActionSheet>

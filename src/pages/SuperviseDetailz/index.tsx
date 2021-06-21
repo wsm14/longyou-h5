@@ -135,7 +135,7 @@ export default function Index() {
                     <AtListItem title='整改类型' extraText={detail?.noticeTypeStr} />
                     <AtListItem title='所属科室' extraText={detail?.department} />
                     <AtListItem title='检查人' extraText={detail?.checkUserNames} />
-                    <AtListItem title='检查日期' extraText={detail?.checkDate} />
+                    <AtListItem title='检查日期' extraText={detail?.checkDate?.slice(0,-8)}/>
                     <AtListItem title='通知书编号' extraText={detail?.noticeCode} />
                     <AtListItem title='最迟整改完成日期' extraText={detail?.dudeDate} />
                     <AtListItem title='存在问题：' note={detail.problem} />
@@ -156,22 +156,31 @@ export default function Index() {
 
 
             <View>
-                <View className="SuperviseDetail-page-box1 baseBox marginTop">
-                    <AtListItem title='存在问题：' note={otherdetail[1]?.approvalOpinion} />
-                    <View className="SuperviseDetail-page-box1-content">
-                        <View className="SuperviseDetail-page-box1-title">
-                            整改情况描述：
-                        </View>
-                        <View className="SuperviseDetail-page-box1-imgContent">
-                            {
-                                !isEmpty(otherdetail[1]) && !isEmpty(otherdetail[1].recordFileList) && otherdetail[1].recordFileList.map(item => (
-                                    <Image src={item.fileUrl}></Image>
-                                ))
-                            }
+                {
+                    !isEmpty(otherdetail) && otherdetail.map(item => {
+                        if (item.taskKey == "submit") {
+                            return (
+                                <View className="SuperviseDetail-page-box1 baseBox marginTop">
+                                    <AtListItem title='整改回复：' note={item.approvalOpinion} />
+                                    <View className="SuperviseDetail-page-box1-content">
+                                        <View className="SuperviseDetail-page-box1-title">
+                                            附件：
+                                        </View>
+                                        <View className="SuperviseDetail-page-box1-imgContent">
+                                            {
+                                                !isEmpty(item.recordFileList) && item.recordFileList.map(item => (
+                                                    <Image src={item.fileUrl}></Image>
+                                                ))
+                                            }
+    
+                                        </View>
+                                    </View>
+                                </View>
+                            )
+                        }                     
+                    })
 
-                        </View>
-                    </View>
-                </View>
+                }
 
                 <View className="SuperviseDetail-page-box1 baseBox" style={{ paddingBottom: "12px" }}>
                     <Picker mode='selector' range={checkList} onChange={(e) => { handleChange("Picker", "approvalConclusion", e) }}>

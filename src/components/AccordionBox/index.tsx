@@ -28,7 +28,7 @@ function Index(props: Interface) {
                                 <AtListItem
                                     title={`${item.corpTypeStr}：`}
                                     note={item.corpName}
-                                    key={item.corpId}
+                                    key={item.projectCorpId}
                                 />
                             ))
                         }

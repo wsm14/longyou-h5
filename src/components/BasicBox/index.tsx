@@ -9,12 +9,13 @@ interface Interface {
     title: string
     children?: any
     style?:any
+    color?:any
 }
 export default function Index(props: Interface) {
-    const { title, children,style} = props;
+    const { title, children,style,color} = props;
     return (
             <View className="basicBox baseBox" style={style}>
-                <View className="basicBox-icon"></View>
+                <View className="basicBox-icon" style={color}></View>
                 <AtListItem
                     title={title}
                 ></AtListItem >

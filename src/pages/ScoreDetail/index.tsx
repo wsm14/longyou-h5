@@ -173,7 +173,7 @@ export default function Index() {
                                 <View>扣减分数</View>
                                 <AtInputNumber
                                     min={0}
-                                    max={10}
+                                    max={100}
                                     step={1}
                                     value={item.reduceScore ? item.reduceScore : 0}
                                     onChange={(e) => { handleChange("inputNumber", ind, e) }}

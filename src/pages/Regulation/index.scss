@@ -13,6 +13,8 @@
             &-name{
                 @include fc(32px,#fff);
                 font-weight: 600;
+                max-width: 500px;
+                line-height: 48px;
             }
             &-out{
                display: flex;

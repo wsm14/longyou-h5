@@ -36,7 +36,7 @@ export default function Index() {
         attachmentIds = [],//检查附件
         attachmentFiles = [],//附件图片
         checkResult,//整改类型
-        checkUserValue,//检查人选择的第几项
+        // checkUserValue,//检查人选择的第几项
         checkDate,//检查日期
         dudeDate,//最迟整改日期
         problem,//存在问题
@@ -140,8 +140,9 @@ export default function Index() {
         }
 
         if (operationType === "remove") {
-            type === "attachmentFiles" ? problemAttachmentIds.splice(index, 1) : problemAttachmentIds.splice(index, 1)
+            type === "attachmentFiles" ? attachmentIds.splice(index, 1) : problemAttachmentIds.splice(index, 1)
         }
+        console.log(attachmentIds)
         detail.attachmentIds = attachmentIds;
         detail.problemAttachmentIds = problemAttachmentIds;
         setDetail({ ...detail })

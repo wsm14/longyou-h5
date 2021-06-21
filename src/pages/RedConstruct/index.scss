@@ -1,0 +1,29 @@
+@import "../../styles/base.scss";
+.taro_router {background:$backGround_blackF1;}
+.redConstruct-page{
+    min-height:1040px;
+    background-image: url('../../static/images/red1.png');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    &-content{
+        padding: 32px;
+        &-tittle{
+            @include fc(36px,#fff);
+            font-weight: 600;
+        }
+
+        &-instru{
+            @include fc(32px,#fff);
+            line-height: 44px;
+            margin-top: 24px;
+        }
+
+        .submitButton{
+            margin-top: 96px;
+        }
+    }
+    
+}
+
+
+

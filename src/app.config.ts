@@ -19,6 +19,10 @@ export default {
     "pages/SuperviseDetailz/index",//监督检查-整改-政府
     "pages/Complaint/index",//投诉建议
     "pages/Evaluate/index",//投诉建议
+    "pages/RedConstruct/index",//红色工地
+    "pages/Publicity/index",//公示消息
+    "pages/PublicityDetail/index",//公示消息-详情
+    "pages/ImagePage/index",//公示消息-详情
   ],
   window: {
     backgroundTextStyle: 'light',
