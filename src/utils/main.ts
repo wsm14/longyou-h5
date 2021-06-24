@@ -3,8 +3,10 @@ import doRequestAction from "../api/request";
 import * as Api from '../api/api'
 
 
+type projectIdStyle = number | string | undefined
+
 //扫码获取项目名称、项目等级
-export const GetProgectIndexLevel = (projectId: string | undefined) => {
+export const GetProgectIndexLevel = (projectId: projectIdStyle) => {
   return doRequestAction({
     url: `/api/pm/cs/qrc/${projectId}/getWithoutAuthProjectScore`,
   })
@@ -13,7 +15,7 @@ export const GetProgectIndexLevel = (projectId: string | undefined) => {
 
 //项目信息（上方9个内容）
 
-export const GetDeviceNumber = (projectId: string) => {
+export const GetDeviceNumber = (projectId: projectIdStyle) => {
   return doRequestAction({
     url: `/api/core/projectBroad/device/number/${projectId}`,
   })
@@ -21,7 +23,7 @@ export const GetDeviceNumber = (projectId: string) => {
 
 
 //项目信息详情
-export const GetProjectDetail = (projectId: string) => {
+export const GetProjectDetail = (projectId: projectIdStyle) => {
   return doRequestAction({
     url: `/api/core/projectBroad/${projectId}/projectDetail`,
   })
@@ -85,6 +87,17 @@ export const ProcessTaskList = (data) => {
   return doRequestAction({
     url: `/api/core/workflow/${data.pageNum}/${data.pageSize}/processTaskListByPhone`,
     data:data,
+    method:"POST",
+    contentType:"json"
+  })
+}
+
+
+//判断项目是否
+export const standardizationMonthlyReviewCheck = (projectId:projectIdStyle) => {
+  return doRequestAction({
+    url: `/api/qualitysafety/standardizationMonthlyReview/check/${projectId}`,
+    isID:true,
     method:"POST",
     contentType:"json"
   })

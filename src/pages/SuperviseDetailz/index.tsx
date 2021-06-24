@@ -119,7 +119,7 @@ export default function Index() {
                         <View className="SuperviseDetail-page-box1-imgContent">
                             {
                                 !isEmpty(detail.recordFileList) && detail.recordFileList.map(item => (
-                                    <Image src={item.fileUrl}></Image>
+                                    <Image src={item.fileUrl} key={item.fileId}></Image>
                                 ))
                             }
                         </View>
@@ -146,7 +146,7 @@ export default function Index() {
                         <View className="SuperviseDetail-page-box1-imgContent">
                             {
                                 !isEmpty(detail.problemFileList) && detail.problemFileList.map(item => (
-                                    <Image src={item.fileUrl}></Image>
+                                    <Image src={item.fileUrl} key={item.fileId}></Image>
                                 ))
                             }
                         </View>
@@ -160,7 +160,7 @@ export default function Index() {
                     !isEmpty(otherdetail) && otherdetail.map(item => {
                         if (item.taskKey == "submit") {
                             return (
-                                <View className="SuperviseDetail-page-box1 baseBox marginTop">
+                                <View className="SuperviseDetail-page-box1 baseBox marginTop" key={item.id}>
                                     <AtListItem title='整改回复：' note={item.approvalOpinion} />
                                     <View className="SuperviseDetail-page-box1-content">
                                         <View className="SuperviseDetail-page-box1-title">
@@ -169,7 +169,7 @@ export default function Index() {
                                         <View className="SuperviseDetail-page-box1-imgContent">
                                             {
                                                 !isEmpty(item.recordFileList) && item.recordFileList.map(item => (
-                                                    <Image src={item.fileUrl}></Image>
+                                                    <Image src={item.fileUrl} key={item.fileId}></Image>
                                                 ))
                                             }
     

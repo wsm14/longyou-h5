@@ -55,11 +55,11 @@ export default function Index() {
         detail.workerName = name;
         detail.projectId = projectId;
         const res = await SearchWorker(detail);
-        console.log(res.data[0])
         if (!isEmpty(res.data[0])) {
             setProjectMsg(res.data[0]);
         }else{
             setProjectMsg({});
+            Taro.showToast({ title: "查无此工友", icon: "none", duration: 1000 });
         }
         
     }
@@ -109,7 +109,7 @@ export default function Index() {
                                     </View>
                                 </AtList>
                                 <View className="InquiryService-page-content-box-bottom1">
-                                    您在【杭州市智慧工地实名制管理应用系统】中，项目{projectName}：
+                                    您在【龙游县智慧建设监管云平台】中，项目{projectName}：
                                 </View>
                                 <View className="InquiryService-page-content-box-bottom2">
                                     {year}年登记考勤的天数为{attendDayByYear}天，{year}年{month}月登记考勤的天数为{attendDayByMonth}天；

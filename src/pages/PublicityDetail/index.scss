@@ -27,12 +27,15 @@
 }
 
 .listItem{
-    display: flex;
+    // display: flex;
     position: relative;
     padding: 24px 0;
     box-sizing: border-box;
     @include fc(32px,#787878);
     line-height: 44px;
+    h2{
+        line-height: 80px!important;
+    }
 }
 .listItem::after{
     content: "";

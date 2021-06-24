@@ -13,7 +13,6 @@ interface Interface {
 function Index(props: Interface) {
     const [open, setOpen] = useState(false);
     const {projectDetail={}} = props;
-    console.log("111111")
     return (
         <div>
             <View className="accordionBox baseBox">

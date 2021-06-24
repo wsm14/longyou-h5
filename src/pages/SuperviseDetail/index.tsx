@@ -175,7 +175,7 @@ export default function Index() {
                 !isEmpty(otherdetail) && otherdetail.map(item => {
                     if (item.taskKey == "approval") {
                         return (
-                            <View className="SuperviseDetail-page-box1 baseBox marginTop">
+                            <View className="SuperviseDetail-page-box1 baseBox marginTop" key={item.id}>
                                 <AtListItem title='整改审批：' note={item.approvalConclusion==2?"不同意":"同意"} />
                                 <AtListItem title='整改审批：' note={item.approvalOpinion} />
                             </View>

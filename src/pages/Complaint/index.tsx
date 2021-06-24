@@ -130,17 +130,18 @@ export default function Index() {
                     />
                     <TittleBar title="内容:">
                         <AtTextarea
-                            count={false}
                             value={suggestContent}
                             placeholder='请输入内容'
                             className="titleBar-textarea"
                             onChange={(e) => { handleChange("suggestContent", e) }}
+                            maxLength={200}
                         />
                     </TittleBar>
                     <TittleBar title="照片:" style={{ paddingBottom: "12px" }}>
                         <AtImagePicker
                             files={files}
                             onChange={(files, operationType, index) => { changePicker("files", files, operationType, index) }}
+                            count={5}
                         />
                     </TittleBar>
                 </BasicBox>

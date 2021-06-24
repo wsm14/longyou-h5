@@ -2,13 +2,16 @@
 // .taro_router {background:$backGround_blackF1;}
 .ImagePage-page{
     position: relative;
-    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &-list{
+        text-align: center;
+    }
     &-img{
-        @include wh(300px,200px);
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
+        max-width: 100%;
+        // @include wh(300px,200px);
     }
 }
 

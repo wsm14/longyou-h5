@@ -35,3 +35,5 @@ export const completeProcessTask: string = '/api/qualitysafety/notice/completePr
 //投诉建议
 
 export const complaint:string = "/api/pm/complaintSuggest/create";//投诉建议提交
+
+export const socialEvaluation:string = "/api/pm/socialEvaluation/create";//社会评价

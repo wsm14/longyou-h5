@@ -15,6 +15,7 @@
         }
         &-tittle{
             @include fc(36px,#fff);
+            line-height: 44px;
         }
         &-intru{
             @include fc(28px,#fff);

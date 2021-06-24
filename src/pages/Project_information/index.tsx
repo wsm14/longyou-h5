@@ -47,7 +47,7 @@ export default function Index() {
                 <View className="Infomation-Page-top">
                 </View>
                 <View className="Infomation-Page-bac-padding">
-                    <View className="Infomation-Page-bac-tittle">{detail.projectName}</View>
+                    <View className="Infomation-Page-bac-tittle">{detail?.projectName}</View>
                     {
                         !isEmpty(detail) && (
                             <View className="Infomation-Page-bac-intru">
@@ -121,15 +121,15 @@ export default function Index() {
 
                     <View className="Infomation-Page-bottom baseBox">
                         <AtList >
-                            <AtListItem title='所属科室' extraText={detail.belongOfficeName} />
-                            <AtListItem title='监督人员' extraText={detail.superviseUserNames} />
-                            <AtListItem title='施工许可证' extraText={detail.builderLicenseNumber} />
-                            <AtListItem title='项目所在地' extraText={detail.areaAddress} />
-                            <AtListItem title='项目类别' extraText={detail.categoryStr} />
-                            <AtListItem title='工程状态' extraText={detail.projectStatusStr} />
-                            <AtListItem title='开工日期' extraText={detail.startDate} />
-                            <AtListItem title='总造价（万元）' extraText={detail.invest} />
-                            <AtListItem title='建筑面积（平方米）' extraText={detail.buildingArea} />
+                            <AtListItem title='所属科室' extraText={detail?.belongOfficeName} />
+                            <AtListItem title='监督人员' extraText={detail?.superviseUserNames} />
+                            <AtListItem title='施工许可证' extraText={detail?.builderLicenseNumber} />
+                            <AtListItem title='项目所在地' extraText={detail?.areaAddress} />
+                            <AtListItem title='项目类别' extraText={detail?.categoryStr} />
+                            <AtListItem title='工程状态' extraText={detail?.projectStatusStr} />
+                            <AtListItem title='开工日期' extraText={detail?.startDate} />
+                            <AtListItem title='总造价（万元）' extraText={detail?.invest} />
+                            <AtListItem title='建筑面积（平方米）' extraText={detail?.buildingArea} />
                         </AtList>
                     </View>
 

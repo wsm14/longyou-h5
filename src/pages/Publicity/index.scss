@@ -12,13 +12,19 @@
         &-top{
             display: flex;
             justify-content: space-between;
+            align-items: center;
         }
 
         &-instru{
+            display: flex;
+            align-items: center;
             @include fc(32px,#fff);
             line-height: 44px;
+            .at-icon{
+                font-size: 40px;
+            }
         }
-
+        
         .submitButton{
             margin-top: 96px;
         }
@@ -30,5 +36,7 @@
     
 }
 
-
+.scrollView{
+    height: calc(100vh - 140px);
+}
 
