@@ -83,7 +83,7 @@ export default function Index() {
         <View className="visit-page pageStyle">
             <View className="visit-page-content">
                 <View className="visit-page-content-tittle">来访登记</View>
-                <View className="visit-page-content-instru">欢迎您到【{project?.projectName}】，未经允许不得进入施工现场。进入现场后，请您带上安全帽，不得擅自闯入施工区域！如果超过一行请折行</View>
+                <View className="visit-page-content-instru">欢迎您到【{project?.projectName}】，未经允许不得进入施工现场。进入现场后，请您带上安全帽，不得擅自闯入施工区域！</View>
 
                 <BasicBox title="登记信息">
                     <AtInput

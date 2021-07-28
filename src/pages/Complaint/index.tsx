@@ -71,11 +71,11 @@ export default function Index() {
     const submit = async () => {
 
         const list = {
-            suggesterName:"姓名",//姓名
-            suggesterPhone:"联系电话",//联系电话
-            suggestTheme:"主题",//主题
-            suggestContent:"内容",//内容
-            fileIds:"照片",
+            suggesterName: "姓名",//姓名
+            suggesterPhone: "联系电话",//联系电话
+            suggestTheme: "主题",//主题
+            suggestContent: "内容",//内容
+            fileIds: "照片",
         }
         for (let key in list) {
             if (isEmpty(detail[key])) {
@@ -104,7 +104,7 @@ export default function Index() {
         <View className="Complaint-page pageStyle">
             <View className="Complaint-page-content">
                 <View className="Complaint-page-content-tittle">投诉建议</View>
-                <AccordionBox projectDetail={projectDetail}></AccordionBox>    
+                <AccordionBox projectDetail={projectDetail}></AccordionBox>
 
                 <BasicBox title="姓名投诉建议" style={{ paddingBottom: "12px" }}>
                     <AtInput

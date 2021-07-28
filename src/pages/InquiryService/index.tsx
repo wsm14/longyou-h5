@@ -33,8 +33,8 @@ export default function Index() {
 
 
     const getDetail = async (id) => {
-
-        const res = await FindWorkerInfo(id);
+        const projectId  = Taro.getStorageSync("projectId") || "";
+        const res = await FindWorkerInfo(id,projectId);
         setProjectMsg(res.data);
     }
 

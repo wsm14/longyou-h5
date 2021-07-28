@@ -68,9 +68,9 @@ export const SearchWorker = (data) => {
 
 //获取工人详情
 
-export const FindWorkerInfo = (workerId) => {
+export const FindWorkerInfo = (workerId,projectId) => {
   return doRequestAction({
-    url: `/api/pm/pmworker/${workerId}/findWorkerInfo`,
+    url: `/api/pm/pmworker/${projectId}/${workerId}/findWorkerInfo`,
   })
 } 
 

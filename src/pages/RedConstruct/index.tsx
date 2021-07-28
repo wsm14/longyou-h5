@@ -48,7 +48,8 @@ export default function Index() {
         <View className="redConstruct-page">
             <View className="redConstruct-page-content">
                 <View className="redConstruct-page-content-tittle">红色工地</View>
-                <View className="redConstruct-page-content-instru">{detail?.projectName}党支部</View>
+                
+                <View className="redConstruct-page-content-instru">{isEmpty(detail.projectName)?"请到云平台完善红色工地信息":`${detail.projectName}党支部`}</View>
 
                 {
                     !isEmpty(detail) && (

@@ -116,7 +116,7 @@ export default function Index() {
                                 goToUrl({ url: "Supervise" })
                             }}>
                                 <Image src={regulation_3}></Image>
-                                <View>监督考察</View>
+                                <View>监督检查</View>
                             </View>
                         </View>
                     )

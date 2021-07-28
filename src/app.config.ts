@@ -3,8 +3,8 @@ export default {
     'pages/index/index',
     "pages/squared/index",//九宫格首页
     "pages/main/index",//登录
-    "pages/Regulation/index",//
-    "pages/RegulationMore/index",
+    "pages/Regulation/index",//监督检查
+    "pages/RegulationMore/index",//待办列表更多
     "pages/Project_information/index",
     "pages/SafeAssessment/index",//安全考评
     "pages/ScoreDetail/index",//安全考评详情
