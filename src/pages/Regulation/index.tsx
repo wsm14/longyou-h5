@@ -5,6 +5,7 @@ import { View, Input, Image, Form, Swiper, SwiperItem } from "@tarojs/components
 import { AtList, AtListItem } from "taro-ui"
 import { goToUrl, isEmpty } from "../../utils/variable"
 import { LOGINOUT, ProcessTaskList, standardizationMonthlyReviewCheck } from "../../utils/main"
+import {findSchoolList } from "../../utils/emergency"
 import "./index.scss";
 
 // 图片引入
@@ -12,16 +13,21 @@ import regulation_1 from "../../static/images/regulation_1.png";
 import regulation_2 from "../../static/images/regulation_2.png";
 import regulation_3 from "../../static/images/regulation_3.png";
 import regulation_4 from "../../static/images/out.png";
+import regulation_5 from "../../static/images/school.png";
+
 
 
 export default function Index() {
 
 
     const userInfo = Taro.getStorageSync("userInfo") || {};
+    const projectId = Taro.getStorageSync('projectId') || "";
     const [list, setList] = useState<any>([]);
+    const [schoolList, setSchoolList] = useState([]);
 
     useDidShow(() => {
         getList();
+        getSchoolList();
     })
 
 
@@ -29,6 +35,13 @@ export default function Index() {
     // useEffect(() => {
     //     getList();
     // }, [])
+
+    //获取学校列表
+
+    const getSchoolList = async() =>{
+        const result: any = await findSchoolList({projectId:projectId});
+        setSchoolList(result.data);
+    }
 
 
 
@@ -58,6 +71,11 @@ export default function Index() {
     //跳转
     const jump = (item) => {
 
+        if (userInfo.typeStr == "项目" && (!userInfo.projectIdList.includes(Number(projectId)))) {
+            Taro.showToast({ title: "此账号没有当前项目的权限", icon: "none", duration: 1000 })
+            return false; 
+        }
+
         if (item.taskKey == "submit") {
             goToUrl({
                 url: "SuperviseDetail",
@@ -84,8 +102,8 @@ export default function Index() {
         if (res.code == 200) {
             Taro.removeStorageSync('scoreDetail');
             goToUrl({ url: "SafeAssessment" });
-        }else {
-            Taro.showToast({title: res.msg,icon: "none", duration: 1000})
+        } else {
+            Taro.showToast({ title: res.msg, icon: "none", duration: 1000 })
         }
     }
 
@@ -121,6 +139,28 @@ export default function Index() {
                         </View>
                     )
                 }
+
+
+                {
+                    (userInfo.typeStr == "项目" || userInfo.typeStr == "管理员") && (
+                        <View className="Regulation-Page-middle">
+                            <View className="Regulation-Page-middle-button" onClick={() => {
+                                if (!userInfo.projectIdList.includes(Number(projectId))) {
+                                    Taro.showToast({ title: "此账号没有当前项目的权限", icon: "none", duration: 1000 }) 
+                                }else if (isEmpty(schoolList)) {
+                                    Taro.showToast({ title: "请先在系统上添加民工学校信息", icon: "none", duration: 1000 })  
+                                }else{
+                                    goToUrl({ url: "Education" })
+                                }
+                                
+                            }}>
+                                <Image src={regulation_5}></Image>
+                                <View>班前教育</View>
+                            </View>
+                        </View>
+                    )
+                }
+
 
 
 

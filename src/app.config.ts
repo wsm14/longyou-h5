@@ -23,6 +23,7 @@ export default {
     "pages/Publicity/index",//公示消息
     "pages/PublicityDetail/index",//公示消息-详情
     "pages/ImagePage/index",//公示消息-详情
+    "pages/Education/index",//班前教育
   ],
   window: {
     backgroundTextStyle: 'light',

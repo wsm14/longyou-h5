@@ -74,3 +74,25 @@ export const FindWorkerInfo = (workerId,projectId) => {
   })
 } 
 
+
+//获取学校列表
+
+export const findSchoolList = (data) => {
+  return doRequestAction({
+    url: `/api/pm/workerSchool/${data.projectId}/findSchoolList`,
+    method:"POST",
+    data:data
+  })
+} 
+
+
+//班前教育新增
+export const workerSchoolEducationCreate = (data) => {
+  return doRequestAction({
+    url: `/api/realname/workerSchoolEducation/create`,
+    data:data,
+    method:"POST",
+    isID:true,
+    contentType:"json"
+  })
+} 

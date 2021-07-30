@@ -1,11 +1,11 @@
-import Taro,{useRouter}from '@tarojs/taro';
-import React, { Component,useState, useEffect}  from 'react'
+import Taro, { useRouter } from '@tarojs/taro';
+import React, { Component, useState, useEffect } from 'react'
 import { View, Input, Image, Form } from "@tarojs/components";
 import { AtButton, AtInput, AtForm } from "taro-ui";
 // import { reqLogin, reqProAcc, reqIsLogin,getLoginImgCode} from "../../utils/api";
-import {GETMAINCODE,GETMAINLOGIN,GEPUBLICKEY} from "../../utils/main"
-import {publicEncrypt} from "../../utils/variable";
-import {goToUrl} from "../../utils/variable"
+import { GETMAINCODE, GETMAINLOGIN, GEPUBLICKEY } from "../../utils/main"
+import { publicEncrypt } from "../../utils/variable";
+import { goToUrl } from "../../utils/variable"
 
 import "./index.scss";
 
@@ -19,22 +19,22 @@ function Index() {
   const [password, setPassword] = useState("");
   const [imgCode, setimgCode] = useState("");//图片验证码
   const [codeValue, setCode] = useState("");//输入的验证码
-  const location = useRouter().params; 
-  const {userType} = location;//type 1:政府   2:企业
+  const location = useRouter().params;
+  const { userType } = location;//type 1:政府   2:企业
   useEffect(() => {
-     getImgCode();
+    getImgCode();
   }, []);
 
- const getImgCode = async() =>{
-  const res: any = await GETMAINCODE();
-  setimgCode(res.data.imageBase64);
-  const userInfo:any = Taro.getStorageSync("userInfo") || {};
-  userInfo.authValue = res.data.authValue;
-  Taro.setStorage({
-    key: "userInfo",
-    data: userInfo
-  });
- }
+  const getImgCode = async () => {
+    const res: any = await GETMAINCODE();
+    setimgCode(res.data.imageBase64);
+    const userInfo: any = Taro.getStorageSync("userInfo") || {};
+    userInfo.authValue = res.data.authValue;
+    Taro.setStorage({
+      key: "userInfo",
+      data: userInfo
+    });
+  }
 
   const login = async () => {
     if (username === "") {
@@ -61,44 +61,44 @@ function Index() {
       });
       return;
     }
-    const params = { 
-      username:publicEncrypt((await GEPUBLICKEY()).data,username),
-      password:publicEncrypt((await GEPUBLICKEY()).data,password),
-      captcha:codeValue
+    const params = {
+      username: publicEncrypt((await GEPUBLICKEY()).data, username),
+      password: publicEncrypt((await GEPUBLICKEY()).data, password),
+      captcha: codeValue
     };
-        const result: any = await GETMAINLOGIN(params);
-        console.log(result)
-        if (result.code === 200) {
-            console.log(userType)
-          if ((userType == "1" && (result.data.typeStr != "企业" || result.data.typeStr != "银行")) || (userType == "2" && result.data.typeStr != "政府" )) {
-            Taro.setStorage({
-              key: "userInfo",
-              data: result.data || "{}"
-            });
-            Taro.showToast({
-              title: "登录成功",
-              icon: "success",
-              duration: 1000
-            }).then(() => {
-              goToUrl({url:"Regulation",type:"reLaunch"});
-            });
+    const result: any = await GETMAINLOGIN(params);
+    console.log(result)
+    if (result.code === 200) {
+      console.log(userType)
+      if ((userType == "1" && (result.data.typeStr != "企业" || result.data.typeStr != "银行")) || (userType == "2" && result.data.typeStr != "政府")) {
+        Taro.setStorage({
+          key: "userInfo",
+          data: result.data || "{}"
+        });
+        Taro.showToast({
+          title: "登录成功",
+          icon: "success",
+          duration: 1000
+        }).then(() => {
+          goToUrl({ url: "Regulation", type: "reLaunch" });
+        });
 
-          }else{
-            Taro.showToast({
-              title: "不能登录",
-              icon: "none",
-              duration: 1000
-            })
-          }
+      } else {
+        Taro.showToast({
+          title: "不能登录",
+          icon: "none",
+          duration: 1000
+        })
+      }
 
 
 
-          }else{
-          getImgCode();
-          Taro.showToast({ title: result.msg, icon: "none", duration: 1000 });
-        }
+    } else {
+      getImgCode();
+      Taro.showToast({ title: result.msg, icon: "none", duration: 1000 });
+    }
   };
-  
+
   return (
     <View className="main-page">
       <View className="main-page-tittle">
@@ -108,7 +108,7 @@ function Index() {
         龙游县智慧建设监管云平台
       </View>
       <AtForm className="container baseBox" onSubmit={login}>
-      <AtInput
+        <AtInput
           title={<Image src={login_1}></Image>}
           type='text'
           placeholder='账号'
